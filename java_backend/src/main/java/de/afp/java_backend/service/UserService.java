@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import de.afp.java_backend.model.Subforum;
 import de.afp.java_backend.model.User;
 import de.afp.java_backend.repository.UserRepo;
@@ -39,5 +40,17 @@ public class UserService {
 
     public Optional<User> findUserById(Long id){
         return USERREPO.findById(id);
-    }   
+    }
+    
+    public Boolean validatePassword(User user){
+        Optional<User> pwUser = USERREPO.findById(user.getUserId());
+        User dbUser = pwUser.get();
+        
+        if (BCrypt.verifyer().verify(user.getPassword().toCharArray(), dbUser.getPassword()).verified) {
+            System.out.println("pw right");
+            return true;
+        }
+        return false;
+
+    }
 }
