@@ -14,16 +14,12 @@ public class Subforum {
     private Long subForumId;
     @Column(unique = true)
     private String subName;
-    @ManyToOne
-    @JoinColumn(name="user_id", nullable=false)
-    private User user;
     
     public Subforum(){}
 
-    public Subforum(Long subForumId, String subName, User user){
+    public Subforum(Long subForumId, String subName){
         this.subForumId = subForumId;
         this.subName = subName;
-        this.user = user;
     }
 
     public Long getSubForumID(){
@@ -36,13 +32,5 @@ public class Subforum {
 
     public void setSubName(String subName){
         this.subName = subName;
-    }
-
-    public User getUser(){
-        return this.user;
-    }
-
-    public void setUser(User user){
-        this.user = user;
     }
 }

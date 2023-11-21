@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import de.afp.java_backend.model.PostModel;
-import de.afp.java_backend.model.User;
 import de.afp.java_backend.repository.PostRepo;
 import jakarta.transaction.Transactional;
 
