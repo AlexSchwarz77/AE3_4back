@@ -1,10 +1,14 @@
 package de.afp.java_backend.model;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -16,15 +20,20 @@ public class ThreadModel {
     private User user;
     @ManyToOne @JoinColumn(name = "sub_forum_id", nullable = false)
     private Subforum subforum;
+    private LocalDateTime date;
+    @Lob
+    @Column(length=1024)
+    private String content;
 
     public ThreadModel(){}
 
-    public ThreadModel(Long threadId, String threadTitle, User user, Subforum subforum){
+    public ThreadModel(Long threadId, String threadTitle, User user, Subforum subforum, LocalDateTime date, String content){
         this.threadId = threadId;
         this.threadTitle = threadTitle;
         this.user = user;
         this.subforum = subforum;
-
+        this.date = date;
+        this.content = content;
     }
 
     public Long getThreadId() {
@@ -57,5 +66,18 @@ public class ThreadModel {
 
     public void setSubforum(Subforum subforum){
         this.subforum = subforum;
+    }
+
+    public LocalDateTime getDate(){
+        return this.date;
+    }
+    public void setDate(LocalDateTime date){
+        this.date = date;
+    }
+    public String getContent(){
+        return this.content;
+    }
+    public void setContent(String content){
+        this.content = content;
     }
 }

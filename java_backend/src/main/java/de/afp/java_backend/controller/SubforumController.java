@@ -1,5 +1,6 @@
 package de.afp.java_backend.controller;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import de.afp.java_backend.model.SubHelper;
 import de.afp.java_backend.model.Subforum;
+import de.afp.java_backend.model.ThreadModel;
 import de.afp.java_backend.service.SubforumService;
 
 @RestController
@@ -53,5 +56,10 @@ public class SubforumController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Optional<Subforum>> findSubById(@PathVariable("id") Long id){
         return new ResponseEntity<Optional<Subforum>>(SUBSERVICE.findSubById(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/search/{subName}")
+    public ResponseEntity<List<ThreadModel>> getAllThreadsBySubname(@PathVariable("subName") String subName){
+        return new ResponseEntity<List<ThreadModel>>(SUBSERVICE.getAllThreadsBySubname(subName), HttpStatus.OK);
     }
 }
