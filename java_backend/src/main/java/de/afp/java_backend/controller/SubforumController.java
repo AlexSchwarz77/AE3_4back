@@ -58,5 +58,10 @@ public class SubforumController {
         return new ResponseEntity<Optional<Subforum>>(SUBSERVICE.findSubById(id), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/name/{name}")
+    public ResponseEntity<Optional<Subforum>> getSubByName(@PathVariable("name") String name){
+        return new ResponseEntity<Optional<Subforum>>(SUBSERVICE.findSubByName(name), HttpStatus.OK);
+    }
+
     
 }

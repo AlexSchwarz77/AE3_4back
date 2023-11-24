@@ -21,7 +21,7 @@ public class Subforum {
         this.subName = subName;
     }
 
-    public Long getSubForumID(){
+    public Long getSubForumId(){
         return this.subForumId;
     }
 

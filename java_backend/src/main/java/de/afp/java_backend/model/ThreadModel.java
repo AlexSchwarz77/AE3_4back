@@ -2,8 +2,10 @@ package de.afp.java_backend.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,7 +20,7 @@ public class ThreadModel {
     private String threadTitle;
     @ManyToOne @JoinColumn(name = "user_id", nullable = false)
     private User user;
-    @ManyToOne @JoinColumn(name = "sub_forum_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL) @JoinColumn(name = "subforum_sub_forum_id", nullable = false)
     private Subforum subforum;
     private LocalDateTime date;
     @Lob

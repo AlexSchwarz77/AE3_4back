@@ -1,5 +1,7 @@
 package de.afp.java_backend.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -27,7 +29,8 @@ public class ThreadService {
         return THREADREPO.findAll();
     }
 
-    public void saveThread(ThreadModel thread){
+    public void saveThread(ThreadModel thread){ LocalDateTime x= LocalDateTime.now();
+        thread.setDate(x); 
         THREADREPO.save(thread);
     }
 

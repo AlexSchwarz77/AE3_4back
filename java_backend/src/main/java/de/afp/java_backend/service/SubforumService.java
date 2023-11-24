@@ -45,4 +45,8 @@ public class SubforumService {
     public Optional<Subforum> findSubById(Long id){
         return SUBREPO.findById(id);
     }
+
+    public Optional<Subforum> findSubByName(String name){
+        return SUBREPO.getSubByName(name);
+    }
 }
