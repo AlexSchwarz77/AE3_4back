@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import de.afp.java_backend.model.SubHelper;
+import de.afp.java_backend.model.ThreadHelper;
 import de.afp.java_backend.model.Subforum;
 import de.afp.java_backend.model.ThreadModel;
 
