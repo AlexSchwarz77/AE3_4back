@@ -7,20 +7,23 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import de.afp.java_backend.model.SubHelper;
+import de.afp.java_backend.model.ThreadHelper;
 import de.afp.java_backend.model.Subforum;
 import de.afp.java_backend.model.ThreadModel;
 import de.afp.java_backend.repository.SubforumRepo;
+import de.afp.java_backend.repository.ThreadRepo;
 import jakarta.transaction.Transactional;
 
 @Service
 @Transactional
 public class SubforumService {
     private final SubforumRepo SUBREPO;
+    private final ThreadRepo THREADREPO;
 
     @Autowired
-    public SubforumService(SubforumRepo SUBREPO){
+    public SubforumService(SubforumRepo SUBREPO, ThreadRepo THREADREPO){
         this.SUBREPO = SUBREPO;
+        this.THREADREPO = THREADREPO;
     }
 
     public List<Subforum> allSub(){
@@ -41,11 +44,5 @@ public class SubforumService {
 
     public Optional<Subforum> findSubById(Long id){
         return SUBREPO.findById(id);
-    }
-
-    public List<ThreadModel> getAllThreadsBySubname(String subname){
-        List<ThreadModel> sub = SUBREPO.getAllThreadsBySubname(subname);
-        System.out.println(sub);
-        return sub;
     }
 }

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.afp.java_backend.model.SubHelper;
+import de.afp.java_backend.model.ThreadHelper;
 import de.afp.java_backend.model.Subforum;
 import de.afp.java_backend.model.ThreadModel;
 import de.afp.java_backend.service.SubforumService;
@@ -58,8 +58,5 @@ public class SubforumController {
         return new ResponseEntity<Optional<Subforum>>(SUBSERVICE.findSubById(id), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/search/{subName}")
-    public ResponseEntity<List<ThreadModel>> getAllThreadsBySubname(@PathVariable("subName") String subName){
-        return new ResponseEntity<List<ThreadModel>>(SUBSERVICE.getAllThreadsBySubname(subName), HttpStatus.OK);
-    }
+    
 }

@@ -2,13 +2,13 @@ package de.afp.java_backend.model;
 
 import java.time.LocalDateTime;
 
-public class SubHelper {
+public class ThreadHelper {
     private String subTitle;
     private LocalDateTime date;
     private String content;
 
-    public SubHelper(){}
-    public SubHelper(String subTitle, LocalDateTime date, String content){
+    public ThreadHelper(){}
+    public ThreadHelper(String subTitle, LocalDateTime date, String content){
         this.subTitle = subTitle;
         this.date = date;
         this.content = content;

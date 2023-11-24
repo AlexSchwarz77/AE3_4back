@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import de.afp.java_backend.model.ThreadHelper;
 import de.afp.java_backend.model.ThreadModel;
 import de.afp.java_backend.service.ThreadService;
 
@@ -54,6 +55,11 @@ public class ThreadController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<Optional<ThreadModel>> findThreadById(@PathVariable("id") Long id){
         return new ResponseEntity<Optional<ThreadModel>>(THREADSERVICE.findThreadById(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/search/{subName}")
+    public ResponseEntity<List<ThreadHelper>> getAllThreadsBySubname(@PathVariable("subName") String subName){
+        return new ResponseEntity<List<ThreadHelper>>(THREADSERVICE.getAllThreadsBySubname(subName), HttpStatus.OK);
     }
     
 }
