@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import de.afp.java_backend.model.PostModel;
 import de.afp.java_backend.model.ThreadHelper;
 import de.afp.java_backend.model.ThreadModel;
 import de.afp.java_backend.service.ThreadService;
@@ -62,4 +63,13 @@ public class ThreadController {
         return new ResponseEntity<List<ThreadHelper>>(THREADSERVICE.getAllThreadsBySubname(subName), HttpStatus.OK);
     }
     
+    @GetMapping(value = "/count/{id}")
+    public ResponseEntity<Long> countThreadsByUser(@PathVariable("id") Long id){
+        return new ResponseEntity<>(THREADSERVICE.countThreadsByUser(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value="/threads/{id}")
+    public ResponseEntity<List<Optional<ThreadModel>>> lastPostsByUser(@PathVariable("id") Long id) {
+        return new ResponseEntity<List<Optional<ThreadModel>>>(THREADSERVICE.latestThreadsByUser(id), HttpStatus.OK);
+    }
 }

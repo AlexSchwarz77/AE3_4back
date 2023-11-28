@@ -1,5 +1,6 @@
 package de.afp.java_backend.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +26,8 @@ public class PostService {
     }
 
     public void savePost(PostModel post){
+
+        post.setDate(LocalDateTime.now());
         POSTREPO.save(post);
     }
 
@@ -40,7 +43,15 @@ public class PostService {
         return POSTREPO.findById(id);
     }
 
-    public Optional<?> countPostByUser(Long id){
+    public Long countPostByUser(Long id){
         return POSTREPO.countPostByUser(id);
+    }
+
+    public List<Optional<PostModel>> findPostByThreadId(Long threadId){
+        return POSTREPO.findAllPostByThreadId(threadId);
+    }
+
+    public List<Optional<PostModel>> latestPostsByUser(Long id){
+        return POSTREPO.lastPostsByUser(id);
     }
 }

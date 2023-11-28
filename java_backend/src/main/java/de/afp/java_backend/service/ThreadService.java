@@ -10,6 +10,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import de.afp.java_backend.model.PostModel;
 import de.afp.java_backend.model.ThreadHelper;
 import de.afp.java_backend.model.ThreadModel;
 import de.afp.java_backend.repository.ThreadRepo;
@@ -55,9 +56,17 @@ public class ThreadService {
             th.setContent(threadModel.getContent());
             th.setSubTitle(threadModel.getThreadTitle());
             th.setDate(threadModel.getDate());
+            th.setThreadId(threadModel.getThreadId());
             thl.add(th);
         }
 
         return thl;
+    }
+
+    public Long countThreadsByUser(Long id){
+        return THREADREPO.countThreadsByUser(id);
+    }
+    public List<Optional<ThreadModel>> latestThreadsByUser(Long id){
+        return THREADREPO.lastThreadsByUser(id);
     }
 }

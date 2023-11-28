@@ -19,6 +19,8 @@ import de.afp.java_backend.model.PostModel;
 import de.afp.java_backend.model.Role;
 import de.afp.java_backend.model.User;
 import de.afp.java_backend.service.PostService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping(path = "/post")
@@ -57,7 +59,17 @@ public class PostController {
         return new ResponseEntity<Optional<PostModel>>(POSTSERVICE.findPostById(id), HttpStatus.OK);
     }
     @GetMapping(value = "/count/{id}")
-    public ResponseEntity<?> countPostByUser(@PathVariable("id") Long id){
+    public ResponseEntity<Long> countPostByUser(@PathVariable("id") Long id){
         return new ResponseEntity<>(POSTSERVICE.countPostByUser(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value="/thread/{id}")
+    public ResponseEntity<List<Optional<PostModel>>> findAllPostByThreadId(@PathVariable("id") Long id) {
+        return new ResponseEntity<List<Optional<PostModel>>>(POSTSERVICE.findPostByThreadId(id), HttpStatus.OK);
+    }
+    
+    @GetMapping(value="/posts/{id}")
+    public ResponseEntity<List<Optional<PostModel>>> lastPostsByUser(@PathVariable("id") Long id) {
+        return new ResponseEntity<List<Optional<PostModel>>>(POSTSERVICE.latestPostsByUser(id), HttpStatus.OK);
     }
 }
