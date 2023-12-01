@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import de.afp.java_backend.model.PostModel;
@@ -16,7 +15,7 @@ import jakarta.transaction.Transactional;
 public class PostService {
     private final PostRepo POSTREPO;
 
-    @Autowired
+   
     public PostService(PostRepo POSTREPO){
         this.POSTREPO = POSTREPO;
     }

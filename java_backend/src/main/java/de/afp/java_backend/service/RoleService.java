@@ -3,7 +3,6 @@ package de.afp.java_backend.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import de.afp.java_backend.model.Role;
@@ -15,7 +14,6 @@ import jakarta.transaction.Transactional;
 public class RoleService {
     private final RoleRepo ROLEREPO;
 
-    @Autowired
     public RoleService(RoleRepo ROLEREPO){
         this.ROLEREPO = ROLEREPO;
     }

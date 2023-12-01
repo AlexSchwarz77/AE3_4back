@@ -3,11 +3,10 @@ package de.afp.java_backend.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import de.afp.java_backend.model.Subforum;
+
 import de.afp.java_backend.model.User;
 import de.afp.java_backend.repository.UserRepo;
 import jakarta.transaction.Transactional;
@@ -17,7 +16,6 @@ import jakarta.transaction.Transactional;
 public class UserService {
     public final UserRepo USERREPO;
 
-    @Autowired
     public UserService(UserRepo USERREPO){
         this.USERREPO = USERREPO;
     }

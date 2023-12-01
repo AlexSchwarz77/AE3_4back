@@ -3,9 +3,7 @@ package de.afp.java_backend.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +28,6 @@ public class UserController {
     private final BCrypt.Hasher hashAlg = BCrypt.with(Version.VERSION_2Y);
     private final UserService USERSERVICE;
 
-    @Autowired
     public UserController(UserService USERSERVICE){
         this.USERSERVICE = USERSERVICE;
     }

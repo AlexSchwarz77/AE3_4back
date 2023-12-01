@@ -3,7 +3,6 @@ package de.afp.java_backend.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class RoleController {
     private final RoleService ROLESERVICE;
 
-    @Autowired
     public RoleController(RoleService ROLESERVICE){
         this.ROLESERVICE = ROLESERVICE;
     }
