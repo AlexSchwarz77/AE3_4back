@@ -69,4 +69,8 @@ public class ThreadService {
     public List<Optional<ThreadModel>> latestThreadsByUser(Long id){
         return THREADREPO.lastThreadsByUser(id);
     }
+
+    public List<Optional<ThreadModel>> latestThreads(){
+        return THREADREPO.latestThreads();
+    }
 }

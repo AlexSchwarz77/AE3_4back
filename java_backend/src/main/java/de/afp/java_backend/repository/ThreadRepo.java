@@ -21,4 +21,7 @@ public interface ThreadRepo extends JpaRepository<ThreadModel, Long>{
 
     @Query(value = "SELECT * from thread_model  where user_id = ?1  order by date desc limit 10", nativeQuery = true)
     List<Optional<ThreadModel>> lastThreadsByUser(Long id);
+
+    @Query(value = "SELECT * from thread_model order by date desc limit 30", nativeQuery = true)
+    List<Optional<ThreadModel>> latestThreads();
 }

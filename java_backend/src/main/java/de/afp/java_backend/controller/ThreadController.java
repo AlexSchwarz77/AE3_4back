@@ -72,4 +72,9 @@ public class ThreadController {
     public ResponseEntity<List<Optional<ThreadModel>>> lastPostsByUser(@PathVariable("id") Long id) {
         return new ResponseEntity<List<Optional<ThreadModel>>>(THREADSERVICE.latestThreadsByUser(id), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/latest")
+    public ResponseEntity<List<Optional<ThreadModel>>> latestThreads(){
+        return new ResponseEntity<List<Optional<ThreadModel>>>(THREADSERVICE.latestThreads(), HttpStatus.OK);
+    }
 }
